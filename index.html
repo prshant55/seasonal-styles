@@ -59,12 +59,12 @@
 	    <img src="images/four-seasons.gif" alt="Seasonal Logo Goes Here" class="flexible" id="logo" />
 		<h1 class="masthead">Eddie Browser</h1>
 		<nav>
-			<ul>
-				<li class="seasons"><a href="Default">Default</a></li>
-				<li class="seasons"><a href="Spring">Spring</a></li>
-				<li class="seasons"><a href="Summer">Summer</a></li>
-				<li class="seasons"><a href="Fall">Fall</a></li>
-				<li class="seasons"><a href="Winter">Winter</a></li>
+			<ul class="seasons">
+				<li><a href="Default">Default</a></li>
+				<li><a href="Spring">Spring</a></li>
+				<li><a href="Summer">Summer</a></li>
+				<li><a href="Fall">Fall</a></li>
+				<li><a href="Winter">Winter</a></li>
 			</ul>
 		</nav>
 	</header>
@@ -105,8 +105,48 @@
 	$("document").ready(function(){
 		$('.seasons a').click(function(e){//find all a tags inside class of seasons
             e.preventDefault();//stop default submission
-			var season = $(this).attr("href");//contents of href attribute of this element
-			alert(season);
+			let season = $(this).attr("href");//contents of href attribute of this element
+			//alert(season);
+			season = season.toLowerCase();
+			switch(season){
+				case "spring":
+					//alert("yay Spring");
+					$("#logo").attr("src","images/spring.gif");
+					$("#wear").attr("src","images/spring-wear.jpg");
+					$("html").css("background-color","#2B7129");
+					$("main header h3").html("Jump Its Spring!");
+				break;
+
+				case "summer":
+					$("#logo").attr("src","images/summer.gif");
+					$("#wear").attr("src","images/summer-wear.jpg");
+					$("html").css("background-color","#EBA52B");
+					$("main header h3").html("Hot and Warm Summer!");
+				break;
+
+				case "winter":
+					$("#logo").attr("src","images/winter.gif");
+					$("#wear").attr("src","images/winter-wear.jpg");
+					$("html").css("background-color","#005393");
+					$("main header h3").html("Winter is here!");
+				break;
+				
+				case "fall":
+				    $("#logo").attr("src","images/fall.gif");
+					$("#wear").attr("src","images/fall-wear.jpg");
+					$("html").css("background-color","#A81124");
+					$("main header h3").html("Down for Fall!");
+				break;
+				
+				default:
+					$("#logo").attr("src","images/four-seasons.gif");
+					$("#wear").attr("src","images/300x400.png");
+					$("html").css("background-color","#ccc");
+					$("main header h3").html("Heloo nature");
+				break;
+			}
+			
+			
 		});
 	});
     </script>
